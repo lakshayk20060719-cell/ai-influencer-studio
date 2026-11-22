@@ -27,9 +27,10 @@ jobs:
         with:
           gradle-version: '8.7'
 
-      
-
       - name: Install Android platform and build tools
+        uses: android-actions/setup-android@v3
+
+      - name: Accept Android licenses and install packages
         run: |
           yes | sdkmanager --licenses
           sdkmanager "platforms;android-35" "build-tools;35.0.0"
@@ -47,4 +48,3 @@ jobs:
           name: ai-influencer-studio-debug-apk
           path: project/ai-influencer-android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
-          
